@@ -1,0 +1,44 @@
+esphome:
+  name: disco
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: "<<ssid goes here>>"
+  password: "<< password goes here>>"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "pleasehackme"
+    password: "nownownownow"
+
+    # Example configuration entry
+
+mqtt:
+  broker: <<mqtt broker ip goes here>>
+  discovery: True
+  id: discoball
+
+web_server:
+  port: 80
+
+switch:
+  - platform: restart
+    name: "restart"
+  - id: lampa
+    platform: gpio
+    pin:
+      number: GPIO2
+      inverted: false
+    name: "LAMPA"
+    
+  
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+#api:
+
+ota:
